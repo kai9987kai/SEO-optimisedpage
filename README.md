@@ -1,106 +1,126 @@
-# Kai William Piper — Creative Technology Portfolio
+# SEO-optimisedpage — Kai William Piper's Creative Technology Portfolio
 
-A responsive, dependency-free, single-file portfolio showcasing AI-enabled web tools, 3D modelling and technical art, real-time simulations, and 3D printing workflows.
+[![HTML5](https://img.shields.io/badge/HTML5-single--file-E34F26?logo=html5&logoColor=white)](index.html)
+[![CSS3](https://img.shields.io/badge/CSS3-responsive-1572B6?logo=css&logoColor=white)](index.html)
+[![JavaScript](https://img.shields.io/badge/JavaScript-vanilla-F7DF1E?logo=javascript&logoColor=black)](index.html)
+[![Dependencies](https://img.shields.io/badge/runtime%20dependencies-0-2ea44f)](index.html)
+[![Licence: MIT](https://img.shields.io/badge/Licence-MIT-blue)](LICENSE)
 
-The October 2026 upgrade preserves the original portfolio experience and adds more resilient search, shareable filtered views, portable exports, keyboard improvements, and an opt-in deterministic Canvas experiment. The website is designed for **static hosting**: no build system, backend, account, API key, or external JavaScript framework is required.
+A fast-to-deploy, responsive, **single-file creative technology portfolio** designed around discoverable content, accessible interactions and inspectable browser-side experiments. It showcases **AI-enabled web tools, 3D modelling and technical art, real-time simulations, and 3D printing workflows**.
 
-**Canonical site configured in the HTML:** [kai9987kai.pw](https://kai9987kai.pw/)  
-**GitHub profile:** [github.com/kai9987kai](https://github.com/kai9987kai)  
-**Main application file:** [`portfolio_upgraded_2026.html`](portfolio_upgraded_2026.html)
+The complete application is in **[`index.html`](index.html)**: HTML, CSS, JavaScript and JSON-LD together. There is **no framework, bundler, npm installation, backend, API key or external runtime dependency**.
 
-> **Release status:** Feature-complete upgrade candidate, with **23/23 local automated regression checks passing** on 17 October 2026. Production Core Web Vitals, cross-browser and assistive-technology validation remain outstanding. The canonical site link above is the configured domain, not a claim that this upgraded file has already been deployed there.
+**Links:** [Source repository](https://github.com/kai9987kai/SEO-optimisedpage) · [Kai's GitHub profile](https://github.com/kai9987kai) · [Configured canonical website](https://kai9987kai.pw/)
+
+> **Release note — October 2026:** The repository's `main` branch contains the upgraded portfolio as `index.html`. This README describes the code in that file, rather than a separate `portfolio_upgraded_2026.html` that is **not** present in the repository. The canonical URL is configured in the HTML; its presence does not independently verify the deployed site's current version.
 
 ## Contents
 
-- [Overview](#overview)
-- [Features](#features)
-- [Quick start](#quick-start)
-- [Controls and keyboard shortcuts](#controls-and-keyboard-shortcuts)
-- [Architecture](#architecture)
-- [Data exports and privacy](#data-exports-and-privacy)
-- [Testing and regression results](#testing-and-regression-results)
-- [Performance and limitations](#performance-and-limitations)
+- [Highlights](#highlights)
+- [Portfolio content](#portfolio-content)
+- [Getting started](#getting-started)
+- [Using the website](#using-the-website)
+- [Interactive agent playground](#interactive-agent-playground)
+- [Technical architecture](#technical-architecture)
+- [SEO and structured data](#seo-and-structured-data)
+- [Accessibility and privacy](#accessibility-and-privacy)
+- [Testing and regression history](#testing-and-regression-history)
+- [Performance and known limitations](#performance-and-known-limitations)
 - [Deployment](#deployment)
 - [Customisation](#customisation)
 - [Roadmap](#roadmap)
-- [References](#references)
-- [Credits and licensing](#credits-and-licensing)
+- [Contributing and security](#contributing-and-security)
+- [Licence and references](#licence-and-references)
 
-## Overview
+## Highlights
 
-The page introduces Kai William Piper as a creative technologist and presents four original project areas:
+| Area | Implemented in `index.html` |
+| --- | --- |
+| **Responsive interface** | Mobile-friendly cards, CSS Grid/Flexbox, fluid typography, sticky navigation, scroll progress indicator and print styles |
+| **Themes** | Automatic (system), dark and light modes; browser-local preference with a storage-denial fallback |
+| **Portfolio search** | On-page, multi-term search across project cards; matches elsewhere on the page are surfaced separately rather than hiding entire sections |
+| **Project filters** | All, AI, 3D, Simulation, Web and 3D printing; categories combine with search |
+| **Deep links** | URL parameters `?q=` and `?filter=` with share/copy support, browser history updates and restoration via navigation |
+| **Command palette** | Keyboard-accessible native dialog for section navigation, filtering and useful actions |
+| **Project explanations** | Four project-area cards, tags and expandable workflow disclosures |
+| **Agent experiment** | Optional, seeded Canvas 2D motion simulation, fixed 60 Hz simulation steps, playback controls and JSON snapshot export |
+| **Browser-side diagnostics** | Observed LCP, CLS and a clearly labelled interaction-event latency proxy where browser APIs permit |
+| **Local exports** | vCard (`.vcf`), project-area JSON, simulation JSON and diagnostics JSON |
+| **Copy and share actions** | Site link, short bio, deployment checklist, hero image prompt, audit summary, vCard text and filtered portfolio URL |
+| **SEO foundation** | Descriptive document metadata, canonical/hreflang tags, Open Graph and Twitter metadata, semantic content and JSON-LD |
+| **Accessible fundamentals** | Skip link, focus visibility, semantic landmarks, native FAQ disclosures, keyboard support and reduced-motion handling |
+| **Static-first behaviour** | Core content remains readable when JavaScript is disabled |
 
-1. **AI-enabled web tools** — client-side AI prototype interfaces, searchable memory, feedback, telemetry, and debugging workflows.
-2. **Real-time simulation prototypes** — Unity/C# and Three.js-oriented systems, agents, procedural behaviour, and performance considerations.
-3. **3D modelling and technical art** — Maya/Blender modelling, topology, UV layout, LOD planning, and game-ready exports.
-4. **3D printing and fabrication debugging** — FDM calibration, tolerance tests, slicer profiles, and repeatable troubleshooting.
+**Important scope:** Terms such as Unity, Three.js, WebGPU, Maya and machine learning describe the creator's work or future directions. They **do not** mean those engines, models or SDKs are executed or bundled by this webpage. The playground is a deterministic motion visualisation, **not a trained AI agent**.
 
-These are **portfolio capability areas**, not automatically verified claims of completed client projects. The expanded workflow descriptions illustrate approaches and should be supplemented with links, screenshots, measurements, and real case studies as those become available.
+## Portfolio content
 
-### Design goals
+The homepage is organised around four capability areas:
 
-- Keep the existing content, identity, controls, and static-hosting simplicity.
-- Improve usability without requiring account creation or client/server infrastructure.
-- Work without external runtime assets; retain readable HTML, CSS, and JavaScript in one file.
-- Be accessible by keyboard and respect reduced-motion preferences.
-- Provide honest, inspectable demonstrations and measurements instead of unverifiable performance or AI claims.
+1. **AI-enabled web tools** — interfaces for AI-related prototypes, local memory/search concepts, feedback, analytics and debugging.
+2. **Real-time simulation prototypes** — game/simulation systems, agents, procedural behaviour, profiling and repeatable configurations.
+3. **3D modelling and technical art** — topology, UVs, optimisation, level-of-detail planning and engine-ready workflows.
+4. **3D printing and fabrication debugging** — FDM calibration, slicer settings, adhesion, tolerance testing and iteration.
 
-## Features
+There are also **Skills**, **Research Lab**, **Playground**, **Proof and process**, and **FAQ** sections. The examples in the project cards explain workflows and interests; they should not be read as independently verified production-client case studies. Links to finished assets, repositories and measured outcomes are useful future additions.
 
-| Feature | Implementation | Status |
-| --- | --- | --- |
-| Responsive portfolio layout | CSS Grid/Flexbox, fluid type, responsive cards | Retained |
-| Auto / dark / light themes | CSS custom properties, `data-theme`, safe preference storage | Retained and hardened |
-| Live project search | Normalised multi-term search with non-project matches | Improved |
-| Category filters | All, AI, 3D, Simulation, Web, 3D printing | Retained |
-| Search state in URL | `?q=` and `?filter=`; shareable portfolio views | Expanded |
-| Command palette | Native dialog, keyboard commands, filtered actions | Improved |
-| Project workflow disclosures | Expandable descriptions for all four original project areas | Added |
-| Deterministic agent experiment | Opt-in, seeded Canvas 2D simulation with 60 Hz fixed-step logic | Added |
-| Clipboard actions | Website URL, biography, checklist, image prompt, audit, vCard text | Retained |
-| File exports | `.vcf`, project JSON, simulation JSON, browser diagnostics JSON | Added |
-| Local diagnostics | LCP, CLS, event-latency proxy where browser APIs permit | Improved labelling |
-| FAQ | Four visible answers, expand/collapse, matching JSON-LD | Retained |
-| Search engine metadata | Canonical, social metadata, semantic HTML, structured data | Retained and revised |
-| Print experience | Print CSS that keeps project headings visible | Fixed |
-| Accessibility foundations | Skip link, semantic structure, visible focus, keyboard use, reduced motion | Improved |
-| No-script content | Core portfolio content remains available without JavaScript | Retained |
+## Getting started
 
-### Deterministic agent field
+### Option 1: open locally
 
-The **Research Lab / Playground** includes a small visual experiment rendered with the browser's Canvas 2D API. Users can change the integer seed, choose **12–120** agents, adjust the speed multiplier between **0.25× and 2×**, start/pause the field, reset its initial conditions, and export a JSON snapshot.
+Clone the repository:
 
-- The simulation is **paused by default**, stops when the tab becomes hidden, and does not run animation when the operating system requests reduced motion.
-- Simulation updates use a fixed **1/60-second step** and seeded initial conditions.
-- Exported state contains positions, velocities, agent metadata, tick count, logical canvas size, seed, and current speed.
-- Repeating a run using the same seed and tick count is intended to reproduce a fixed configuration. **Changes to the speed control during a run are not logged**, so the snapshot alone does not reconstruct arbitrary mid-run speed changes.
-- The experiment is a deterministic motion demonstration; **it is not machine learning, reinforcement learning, or evidence of trained intelligence**.
+```bash
+git clone https://github.com/kai9987kai/SEO-optimisedpage.git
+cd SEO-optimisedpage
+```
 
-## Quick start
+Open **`index.html`** in a modern browser. No build is required. Some browser APIs behave differently under `file://` URLs, so a local server is recommended for testing search URLs, sharing and downloads.
 
-### Option A — Open the HTML directly
+### Option 2: serve locally (recommended)
 
-Download or clone the project and open `portfolio_upgraded_2026.html` in a current desktop browser. The primary portfolio content does not need a web server. Some browser capabilities, particularly clipboard, URL history manipulation, and sharing, may behave differently on `file://` URLs.
-
-### Option B — Run a local static server (recommended)
-
-Requires Python 3:
+From the project directory, using Python 3:
 
 ```bash
 python -m http.server 8000
 ```
 
-From the folder containing `portfolio_upgraded_2026.html`, open:
+Visit **http://localhost:8000/**.
+
+### Repository layout
+
+The GitHub repository reviewed for this README contains:
 
 ```text
-http://localhost:8000/portfolio_upgraded_2026.html
+SEO-optimisedpage/
+├── index.html          # Complete interactive portfolio (HTML + CSS + JS + JSON-LD)
+├── README.md           # Project documentation
+├── LICENSE             # MIT licence
+├── CODE_OF_CONDUCT.md  # Community participation guidance
+└── SECURITY.md         # Security policy (see maintenance note below)
 ```
 
-To use the upgraded page as the site's homepage, copy or rename it to `index.html` in your deployment folder and serve that directory. **This is a copy/rename operation, not a required code build step.**
+**No `package.json`, `src/` directory, build step or checked-in regression test script is required by or currently included in this repository.** Separate local test/audit artefacts were produced during development, but they are not part of the reviewed GitHub tree.
 
-### Example deep-link search
+## Using the website
 
-Once the file is deployed at the configured canonical root, visitors can use addresses such as:
+| Action | Control / shortcut |
+| --- | --- |
+| Search | Use the header search field; `/` focuses it when you are not typing in another input |
+| Clear search | **Clear** button in the search field |
+| Filter portfolio cards | Select **All**, **AI**, **3D**, **Simulation**, **Web**, or **3D printing** |
+| Reset search and filters | **Reset search and filters** below the cards |
+| Open command palette | **Ctrl+K** (Windows/Linux) or **⌘K** (macOS) |
+| Navigate palette | Type to narrow commands; **↑/↓** to move; **Enter** to activate; **Esc** to close |
+| Change theme | **Theme** button cycles Auto → Dark → Light |
+| Share the current view | **Share current view** (native sharing where supported; otherwise copy link) |
+| Copy text | **Copy site link**, **Copy short bio**, **Copy checklist**, **Copy vCard text**, **Copy hero image prompt**, or **Copy audit summary** |
+| Download vCard | **Download .vcf** |
+| Export portfolio metadata | **Export project areas as JSON** |
+| Expand/collapse FAQs | Select individual questions or use **Open all FAQs** / **Close all FAQs** |
+| Export session readings | **Export session diagnostics** |
+
+Search and filter settings are represented in the URL. Examples for a deployment at the configured domain:
 
 ```text
 https://kai9987kai.pw/?q=Unity
@@ -108,186 +128,171 @@ https://kai9987kai.pw/?filter=ai
 https://kai9987kai.pw/?q=simulation&filter=simulation
 ```
 
-These examples describe supported URL parameters; whether the deployed site currently runs the upgrade must be verified separately.
+Those are **URL-format examples**, not guarantees that a particular hosting deployment currently serves this commit.
 
-## Controls and keyboard shortcuts
+## Interactive agent playground
 
-| Action | How to use it |
+The **Playground** section contains a dependency-free Canvas 2D experiment intended to demonstrate deterministic simulation and lightweight debugging.
+
+- **Seed:** Integer-controlled pseudo-random initial conditions.
+- **Agent count:** Adjustable from **12 to 120**.
+- **Speed:** Adjustable from **0.25× to 2×**.
+- **Playback:** **Start simulation** / **Pause simulation**.
+- **Reset:** Reinitialises the visual field using the selected seed.
+- **Export:** Saves `agent-simulation-run.json`, including seed, agent positions/velocities, state and simulated ticks.
+- **Motion preferences:** Starts paused, pauses when the browser tab is hidden, and does not start animation when reduced motion is requested.
+
+The simulation uses a **fixed 1/60-second update step** and draws frames with `requestAnimationFrame`. Reproducibility depends on the same logical canvas dimensions, seed, speed and tick count. **Mid-run speed adjustments are not logged as a complete replay history** in exported snapshots. This is a graphical motion experiment, not reinforcement learning or a neural model.
+
+## Technical architecture
+
+### HTML, CSS and JavaScript
+
+Everything necessary to run the website is embedded in [`index.html`](index.html):
+
+- **HTML:** Semantic `main`, `nav`, `section`, `article`, headings, `<details>` FAQs, native `<dialog>`, form controls, and Canvas.
+- **CSS:** Theme custom properties, grid layout, responsive breakpoints, transitions, print rules and `prefers-reduced-motion` handling.
+- **JavaScript:** Search/filter state, query-parameter synchronisation, commands, copy/share, browser-local preference handling, downloads, diagnostics, animation and event listeners.
+- **JSON-LD:** A Schema.org graph describing the page/site/person, breadcrumbs, portfolio project areas and FAQs.
+
+State is kept on the client. The site does not require a remote database, account login, paid API, external icon font or server-rendered framework.
+
+### Downloadable files produced by the page
+
+| File | Purpose |
 | --- | --- |
-| Search portfolio | Use the search input at the top |
-| Focus search | Press `/` when not typing in an editable field |
-| Open command palette | `Ctrl+K` (Windows/Linux) or `⌘K` (macOS) |
-| Select a command | Type a query, then `Enter`, or use `ArrowDown` and `ArrowUp` |
-| Close command palette | `Escape` or its **Close** button |
-| Filter project categories | Choose a category chip under **Work** |
-| Restore all project cards | **Clear** or **Reset search and filters**, as appropriate |
-| Change colour scheme | Click **Theme** to cycle Auto → Dark → Light |
-| Share selected view | **Share current view**, which uses native sharing when available, otherwise the clipboard |
-| Download contact card | **Download .vcf** |
-| Export project metadata | **Export project areas as JSON** |
-| Run simulation | **Start simulation**; use **Pause simulation** to stop |
-| Export simulation state | **Export run data** |
-| Save local diagnostics | **Export session diagnostics** |
-| Open/close FAQ answers | Activate each FAQ row, or the **Open all FAQs** control |
+| `kai-william-piper.vcf` | Contact information in vCard 4.0 format |
+| `kai-project-areas.json` | Portfolio project descriptions, categories and workflow data |
+| `agent-simulation-run.json` | Current simulation configuration and agent snapshot |
+| `portfolio-session-diagnostics.json` | Locally observed browser/session diagnostic information |
 
-## Architecture
+The text-only **Copy vCard text** button is also retained separately from the actual `.vcf` download.
 
-```text
-.
-├── portfolio_upgraded_2026.html       # All page markup, internal CSS, JSON-LD and JavaScript
-├── portfolio_original_baseline.html    # Original HTML for comparison (optional)
-├── README.md                           # This document
-├── regression_portfolio.py             # Playwright browser regression checks (optional)
-├── portfolio_regression_results.json   # Saved regression test results (optional)
-├── portfolio_benchmark_trials.json     # Saved local timing trials (optional)
-└── PORTFOLIO_UPGRADE_AUDIT.md          # Detailed feature-preservation audit (optional)
-```
+## SEO and structured data
 
-Only **`portfolio_upgraded_2026.html`** is required to operate the portfolio. The testing and audit files are optional development artefacts; the tree above describes the recommended development package, not a guarantee that every file already exists in a particular GitHub repository.
+The site includes an SEO-oriented baseline:
 
-### Technical implementation
+- A descriptive `<title>` and meta description.
+- A canonical URL set to `https://kai9987kai.pw/` and an `en-gb` alternate link.
+- Open Graph and Twitter metadata for link previews (the current HTML does **not** supply a dedicated social preview image).
+- An index/follow robots meta directive.
+- A Schema.org `@graph` with **WebSite**, **Person**, **ProfilePage**, **BreadcrumbList**, **ItemList**, and **FAQPage** entries.
+- Human-readable headings, project descriptions and visible FAQs aligned with structured content.
 
-- **HTML5:** Semantic sections, navigation, `details`, `dialog`, accessible control labels, `canvas`, `time`, and JSON-LD.
-- **CSS:** Embedded styles, custom properties, responsive breakpoints, light/dark/auto themes, print layout and `prefers-reduced-motion` adjustments.
-- **JavaScript:** Vanilla browser APIs; no bundler, framework, backend, CDN-imported runtime script, npm install, or API token.
-- **State:** Search/filter state is reflected in query parameters. Theme preference is stored via `localStorage` when permitted and safely falls back when denied.
-- **Rendering:** The optional simulation uses Canvas 2D and `requestAnimationFrame`; it does not import Three.js or WebGPU.
-- **Instrumentation:** Browser `PerformanceObserver` provides opportunistic in-session metrics. Missing API support is handled as a limitation, not a zero measurement.
-- **Downloads:** JSON and vCard files are produced locally using `Blob` and temporary object URLs.
+These elements help search engines interpret a page, but **do not guarantee rankings, indexing or rich-result eligibility**. FAQ rich results are restricted by Google, and Google's sitelinks search box was retired; including `FAQPage` or `SearchAction` does not restore those features. The repository also does **not** currently contain a separate `sitemap.xml`, `robots.txt`, favicon or Open Graph image. Add appropriate files/assets when deploying if needed.
 
-### What is **not** bundled
+To verify indexing, use [Google Search Console](https://search.google.com/search-console/about), [Bing Webmaster Tools](https://www.bing.com/webmasters/), and Google's [Rich Results Test](https://search.google.com/test/rich-results) on the **deployed URL**.
 
-The site includes content describing Three.js, WebGPU, machine learning, Maya, Unity and other technologies. **Those descriptions and research roadmap panels do not mean those engines, SDKs, models, or GPU capabilities are embedded in the page.** Likewise, this is not a backend search engine, analytics service, or live model-inference demonstration.
+## Accessibility and privacy
 
-## Data exports and privacy
+### Accessibility features
 
-| Download | Filename | Contents |
-| --- | --- | --- |
-| Contact | `kai-william-piper.vcf` | vCard 4.0 containing published name, title, URLs, description and location |
-| Project metadata | `kai-project-areas.json` | Titles, descriptions, tags, workflow text and export timestamp for the four categories |
-| Agent state | `agent-simulation-run.json` | Deterministic experiment configuration and exported agent state |
-| Diagnostics | `portfolio-session-diagnostics.json` | Locally observable performance-related values and debugging metadata |
+The implementation includes a skip-to-content link, native keyboard-compatible controls, visible focus styling, heading/landmark structure, live status announcements, reduced-motion support and accessible FAQ disclosures. The command palette restores focus to the previously active element after closing.
 
-The supplied single-file website does **not** implement an analytics endpoint, remote telemetry upload, login, tracking service or third-party runtime. Exported diagnostics are saved by the user's browser when explicitly requested. Theme preference is the intended browser-local persistent setting; visitors should not assume downloaded JSON is anonymous if they later share it with someone else.
+These design features **are not a certification of WCAG 2.2 AA compliance**. Actual screen-reader, forced-colours, browser zoom, cross-browser and assistive-technology testing is still recommended.
 
-## Testing and regression results
+### Privacy and storage
 
-The upgrade was checked against the preserved original HTML in a local automated browser suite. **All 23 checks passed** in the captured run dated **17 October 2026**.
+The examined `index.html` has **no built-in account system, analytics-upload endpoint, third-party runtime library or remote inference request**. Theme settings are stored locally when permitted. Search terms, agent state and diagnostics are operated on in the browser; data files are saved only when users invoke an export action.
 
-Coverage included:
+Exported diagnostics can include the user-agent string and visited URL. Treat files as **potentially identifying if redistributed**.
 
-- Presence of original interface elements, five core sections and all four original project cards.
-- Search, filtering, empty-state recovery, reset and share-link parameter generation.
-- Theme switching when access to browser storage is denied, reproducing and fixing a baseline failure.
-- Command palette keyboard handling and focus behaviour.
-- FAQ expand/collapse and six original clipboard-copy actions.
-- Valid CRLF-separated vCard, project JSON, agent JSON and diagnostics downloads.
-- Seeded simulation controls, deterministic state export and reduced-motion suppression.
-- Structured-data checks, print heading preservation, lack of added runtime dependencies and no horizontal overflow at a **390 px** viewport.
+## Testing and regression history
 
-### Re-run the regression suite
+An earlier development comparison between the original HTML and the upgraded HTML reported **23/23 automated regression checks passing on 17 October 2026**. The checks covered functional preservation, search/filter behaviour, keyboard interactions, copy/export actions, simulated storage denial, seeded Canvas behaviour, reduced motion, structured data, offline dependency parity, print output and a 390 px layout check.
 
-Requires Python 3, Playwright, Beautiful Soup 4 and Chromium:
+**What this result means:** The tested upgrade candidate passed that local suite. It is **not** a fresh CI run against the currently hosted GitHub Pages site, and the regression script/results are **not in this repository**. Do not treat the historical result as an automatically verified badge for future commits.
 
-```bash
-python -m pip install playwright beautifulsoup4
-python -m playwright install chromium
-python regression_portfolio.py
-```
+### Recommended repeatable checks
 
-Run from a folder containing the Python test script and both `portfolio_original_baseline.html` and `portfolio_upgraded_2026.html`. The script writes `portfolio_regression_results.json` and `browser_performance_comparison.json`, exits non-zero on failed checks, and reports the aggregate result.
+1. Serve `index.html` from a local HTTP server.
+2. Check search, each category, reset, and URL state after refresh/back navigation.
+3. Test clipboard permission denial, blocked `localStorage`, file downloads and browser sharing fallback.
+4. Test command palette focus, keyboard shortcuts, Escape, and reduced-motion preferences.
+5. Confirm agent-seed reproducibility, pause behaviour and JSON-export fields.
+6. Check layouts at desktop and mobile widths, 200–400% browser zoom, print preview and JavaScript disabled.
+7. Run [Lighthouse](https://developer.chrome.com/docs/lighthouse/overview/), [axe-core](https://github.com/dequelabs/axe-core), HTML/structured-data validation and real-browser smoke tests.
 
-**Test-environment caveat:** These checks used Playwright's `page.set_content()` in headless Chromium because direct navigation was restricted in the test environment. They do not certify real deployment, browser history persistence across reloads, production caching, mobile Safari, screen-reader conformance, or field Core Web Vitals.
+For automated tests, a useful next repository addition would be a Playwright suite and a GitHub Actions workflow so that every pull request can be checked without relying on historical results.
 
-See [`PORTFOLIO_UPGRADE_AUDIT.md`](PORTFOLIO_UPGRADE_AUDIT.md) for the full preservation matrix, test methodology and outstanding verification work when the audit file is included alongside this README.
+## Performance and known limitations
 
-## Performance and limitations
+The richer feature set increases the document payload. The following figures came from an **earlier local, ten-run headless Chromium comparison** of original versus upgraded HTML; they are not current production Lighthouse or field measurements:
 
-The new implementation provides additional features but **does not beat the original in every metric**. The following values were recorded using ten alternating local headless Chromium `page.set_content()` trials, with no network request:
+| Metric | Original | Upgraded |
+| --- | ---: | ---: |
+| HTML source size | 56,903 bytes | 77,442 bytes |
+| Gzip size (level 9) | 14,769 bytes | 20,980 bytes |
+| Median local test-harness elapsed time | 43.42 ms | 60.80 ms |
+| External runtime dependencies | 0 | 0 |
 
-| Measurement | Original | Upgraded | Interpretation |
-| --- | ---: | ---: | --- |
-| Source document size | 56,903 bytes | 77,442 bytes | Upgrade is larger |
-| Gzip level 9 | 14,769 bytes | 20,980 bytes | Upgrade transfers more bytes if compressed similarly |
-| Median local harness elapsed time | 43.42 ms | 60.80 ms | Upgrade is slower in this restricted test |
-| Median reported DOMContentLoaded | 31.75 ms | 32.25 ms | Approximately similar in this test; not a production navigation comparison |
-| External runtime dependencies | 0 | 0 | No regression |
-| Automated regression checks | Baseline fails in denied-storage case | 23/23 passing | Candidate improves tested robustness |
+The tested upgrade was **functionally better in the checked scenarios**, but **larger and slower in the local harness**. The timings do not establish real network loading speed, and the live website may behave differently depending on caching, compression, hardware and connection quality.
 
-The local harness time is **not** Lighthouse, real network loading time, true user-perceived startup time, or a statistically reliable field benchmark. The page's **INP proxy** is not official Interaction to Next Paint. Claims of superior real-world speed require independently measured production or controlled-network data.
+**Measurement caveats:** The browser-side "interaction latency" value is an **event-duration proxy, not official Interaction to Next Paint (INP)**. LCP and CLS readings are limited to the current session and available PerformanceObserver APIs. Missing data must not be interpreted as a score of zero.
 
-Other limitations:
-
-- Portfolio skill percentages are illustrative self-assessments, **not independently validated proficiency scores**.
-- The current four project cards are high-level capabilities, not individual evidenced case studies.
-- A genuine social preview image, favicon, `robots.txt` and `sitemap.xml` are not provided by the standalone HTML.
-- The source's Bournemouth location, canonical domain, contact route and project claims need owner review before publication.
-- FAQ and SearchAction structured data do not guarantee rich search results; Google has restricted FAQ display and retired sitelinks search-box presentation.
-- Live/production checks are still needed for accessibility, security headers, mobile browsers, browser zoom, high contrast and search indexing.
+**Other limitations:** Current capability percentages are illustrative self-assessments; four overview cards are not the same as independently evidenced case studies; contact/location claims and canonical domain should be reviewed before publication; and not all browsers expose every progressive-enhancement API.
 
 ## Deployment
 
-The site can be deployed on any static host supporting HTML files, including GitHub Pages and conventional web hosting.
+This is a **static website**. Because the homepage file is already named `index.html`, you can deploy the repository root without renaming any file.
 
-1. Copy `portfolio_upgraded_2026.html` to the site's publishing location as `index.html` (or integrate its content with an existing index).
-2. Check the configured canonical URL, site metadata, published location and GitHub/contact links in both the visible page and its JSON-LD.
-3. Configure your host for HTTPS and appropriate response headers. Prefer a tested Content Security Policy, reasonable caching and compression. Inline styles/scripts require an appropriate CSP hash/nonce strategy if a restrictive CSP is introduced.
-4. Add a real favicon, social preview image, `robots.txt` and `sitemap.xml` as separate assets if needed.
-5. Test **direct navigation** to the homepage and deep-link queries; verify page behaviour after reload and with JavaScript disabled.
-6. Run Lighthouse / PageSpeed Insights, validate structured data and inspect Search Console / Bing Webmaster Tools **on the actual deployed domain**.
-7. Confirm content claims, responsive layout, keyboard navigation, contrast, reduced-motion handling and downloads on real devices.
+### GitHub Pages
 
-### Deployment checklist
+1. Open the repository's **Settings → Pages**.
+2. Under **Build and deployment**, choose **Deploy from a branch** if you want a standard branch-based Pages deployment.
+3. Select **`main`** and **`/ (root)`**, then save.
+4. After publishing, check the Pages URL shown by GitHub and test search, downloads, HTTPS and page navigation.
+5. If deploying to **`kai9987kai.pw`**, configure the custom domain and DNS correctly; confirm the domain resolves to the intended published site before relying on its canonical URL.
 
-```text
-[ ] Preserve a copy of the original site before overwriting it
-[ ] Confirm domain, person details, contact routes and social metadata
-[ ] Upload upgraded file as index.html
-[ ] Add favicon and Open Graph image
-[ ] Publish robots.txt and sitemap.xml where appropriate
-[ ] Verify HTTPS, security headers, compression and cache policy
-[ ] Test URL-search state and download permissions on the deployed origin
-[ ] Run production browser, accessibility and speed audits
-[ ] Review structured data and request indexing as appropriate
-```
+**This README does not assume GitHub Pages or the custom domain is already enabled.**
+
+### SEO and launch checklist
+
+- [ ] Confirm the site's public name, location, bio and contact details.
+- [ ] Verify the canonical URL matches the real published homepage.
+- [ ] Confirm GitHub Pages / static-host configuration and HTTPS.
+- [ ] Add `robots.txt` and `sitemap.xml` if useful for the deployment.
+- [ ] Add a favicon and a suitable Open Graph image.
+- [ ] Validate social metadata, JSON-LD and mobile page appearance.
+- [ ] Check keyboard navigation, high contrast, screen-reader usage and reduced motion.
+- [ ] Run Lighthouse/PageSpeed Insights against the deployed site and compare LCP, CLS and INP using appropriate methods.
+- [ ] Verify indexing and crawl issues in Google Search Console and Bing Webmaster Tools.
+- [ ] Ensure any security headers/CSP allow the site's inline CSS and JavaScript; restrictive CSP requires explicit hashes/nonces or a deliberate policy.
 
 ## Customisation
 
-The page deliberately has no configuration build step. Edit the document directly:
+To edit the portfolio, modify [`index.html`](index.html) directly, then retest key interactions:
 
-- **Bio, location and contact information:** update the hero, header, footer, FAQ, vCard generator, JavaScript `profile` object and machine-readable `Person`/`ProfilePage` structured data together.
-- **Visual themes:** edit the CSS custom properties near the top of the `<style>` element; keep sufficient contrast in light and dark modes.
-- **Project cards:** each project lives inside the `#projects` region as an element with `data-project` and `data-tags`. Keep filter tags accurate; update export assumptions and any corresponding project-area JSON-LD.
-- **Categories:** adding a filter chip also requires updating the categories used for card matching and ensuring the search/share URL accepts that category.
-- **FAQ:** keep the visible answers aligned with the corresponding `FAQPage` JSON-LD; avoid asserting search-rich-result eligibility.
-- **Experiment:** change the Canvas experiment controls and seeded simulation carefully, and re-run deterministic export and reduced-motion tests.
-- **Canonical domain:** update it consistently in metadata, links, structured data, JavaScript share/export metadata and the vCard.
+- **Brand/profile:** Update the header, introductory copy, footer, FAQ, vCard generator, JavaScript profile metadata and matching `Person`/`ProfilePage` JSON-LD together.
+- **Design:** Adjust CSS custom properties for colour, spacing, typography and surface styling.
+- **Projects:** Update the four `data-project` cards and their `data-tags`, expandable workflow details, project exports and relevant structured data.
+- **Filters:** Keep category buttons consistent with each project's token-based tags.
+- **Search links:** Preserve the `q` and `filter` query parameter behaviour when changing search or routing logic.
+- **Playground:** Keep the seeded initialisation, fixed-step update, pause/export behaviour and motion accessibility guarantees intact.
+- **FAQ:** Keep visible questions/answers aligned with the JSON-LD; do not promise rich-result display.
 
-**Recommended change workflow:** retain `portfolio_original_baseline.html` as a known-good reference, modify the upgraded HTML, run automated regression checks, and then do a manual production-browser test before deploying.
+If adding substantial new capabilities, preserve the framework-free/static-first operation unless there is a clear, measured benefit to adding a dependency.
 
 ## Roadmap
 
-These are **future improvements**, not already implemented features:
+**Ideas below are planned opportunities, not implemented features:**
 
-- **Performance:** compare Lighthouse and real-network startup, reduce CSS/JS payload, review minification, and optimise long-task/interaction costs without removing controls.
-- **Evidence-backed projects:** add actual repository references, project screenshots, measurable results, limitations and individual case-study pages.
-- **Automated deployment checks:** run headless browser regressions and accessibility audits in CI against an actual served origin.
-- **Browser coverage:** test Firefox, Safari, iOS/Android, forced-colour mode, 200–400% browser zoom and screen-reader navigation.
-- **Real field instrumentation:** use a maintained Core Web Vitals implementation only if analytics and consent/privacy decisions justify it.
-- **Expanded experiments:** investigate WebGPU and GPU-friendly pipelines with careful feature detection and accessible fallback paths; no current WebGPU integration is claimed.
+- **Automated quality gates:** Commit Playwright regression tests and run them in GitHub Actions, alongside accessibility and HTML validation.
+- **Evidence-rich portfolio:** Individual project pages, screenshots, source links, release history, measurements and lessons learned.
+- **Measured performance work:** Minification/asset budgets, served-origin benchmarking, caching/compression checks and INP testing without deleting features.
+- **Expanded compatibility:** Firefox, Safari, Android and iOS validation, plus assistive technology and forced-colour modes.
+- **More interactive research:** Optional WebGPU-based experiments with feature detection and graceful Canvas fallback, when there is a concrete use case.
+- **SEO assets:** Dedicated social preview imagery, sitemap, robots guidance and validated canonical-domain deployment.
+- **Documentation maintenance:** Replace the generic version examples in [`SECURITY.md`](SECURITY.md) with a policy that matches this actual website and supported release process.
 
-## References
+## Contributing and security
 
-- [WCAG 2.2 — W3C](https://www.w3.org/TR/WCAG22/)
-- [Interaction to Next Paint (INP) — web.dev](https://web.dev/articles/inp)
-- [web-vitals — GoogleChrome](https://github.com/GoogleChrome/web-vitals)
-- [Google FAQ rich-result changes](https://developers.google.com/search/blog/2023/08/howto-faq-changes)
-- [Sitelinks search box retirement](https://developers.google.com/search/blog/2024/10/sitelinks-search-box)
-- [Structured data documentation — Google Search Central](https://developers.google.com/search/docs/appearance/structured-data/intro-structured-data)
-- [GitHub Pages documentation](https://docs.github.com/en/pages)
+Issues and contributions can be discussed via the repository's [Issues page](https://github.com/kai9987kai/SEO-optimisedpage/issues), subject to the project's [Code of Conduct](CODE_OF_CONDUCT.md).
 
-## Credits and licensing
+See [`SECURITY.md`](SECURITY.md) for the existing security-policy file. **At the time of review it contains generic example version numbers/reporting text**, so it should be customised before representing it as a fully operational vulnerability-disclosure policy. Do not post confidential vulnerability details in a public issue.
 
-**Site and portfolio:** Kai William Piper — [GitHub](https://github.com/kai9987kai).
+## Licence and references
 
-This README does **not** assign a new software licence. Consult the repository's existing `LICENSE` file, if one exists; otherwise, add an explicit licence before representing the source code as licensed for reuse.
+Copyright © 2026 Kai Piper. The repository includes an **[MIT licence](LICENSE)**. See the licence text for the full permissions and conditions.
+
+**Technical references:** [WCAG 2.2](https://www.w3.org/TR/WCAG22/) · [MDN: Web Performance APIs](https://developer.mozilla.org/en-US/docs/Web/API/Performance_API) · [web.dev: INP](https://web.dev/articles/inp) · [Google structured-data overview](https://developers.google.com/search/docs/appearance/structured-data/intro-structured-data) · [Google FAQ changes](https://developers.google.com/search/blog/2023/08/howto-faq-changes) · [Google sitelinks search-box retirement](https://developers.google.com/search/blog/2024/10/sitelinks-search-box) · [GitHub Pages](https://docs.github.com/en/pages)
